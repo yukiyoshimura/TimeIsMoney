@@ -10,7 +10,18 @@
 angular.module('TimeIsMoneyApp')
   .controller('ViewCtrl', function ($scope) {
     $scope.max = 200;
+    $scope.hourMax  = 24;
+    $scope.dayMax   = 30;
+    $scope.weekMax  = 7;
+    $scope.monthMax = 12;
+    $scope.yearMax  = 30;
 
+
+    $scope.hourValue = Math.floor((Math.random() * 100) + 1);
+    $scope.dayValue = Math.floor((Math.random() * 100) + 1);
+    $scope.weekValue = Math.floor((Math.random() * 100) + 1);
+    $scope.monthValue = Math.floor((Math.random() * 100) + 1);
+/*
      $scope.random = function() {
        var value = Math.floor((Math.random() * 100) + 1);
        var type;
@@ -31,7 +42,10 @@ angular.module('TimeIsMoneyApp')
        $scope.type = type;
      };
      $scope.random();
+*/
 
+
+/*
      $scope.randomStacked = function() {
        $scope.stacked = [];
        var types = ['success', 'info', 'warning', 'danger'];
@@ -45,4 +59,5 @@ angular.module('TimeIsMoneyApp')
        }
      };
      $scope.randomStacked();
+*/
    });
