@@ -8,7 +8,7 @@
  * Controller of the TimeIsMoneyApp
  */
 angular.module('TimeIsMoneyApp')
-  .controller('ViewCtrl', function ($scope) {
+  .controller('ViewCtrl',['$scope','util',function ($scope,util) {
     $scope.max = 200;
     $scope.hourMax  = 24;
     $scope.dayMax   = 30;
@@ -17,10 +17,18 @@ angular.module('TimeIsMoneyApp')
     $scope.yearMax  = 30;
 
 
-    $scope.hourValue = Math.floor((Math.random() * 100) + 1);
-    $scope.dayValue = Math.floor((Math.random() * 100) + 1);
-    $scope.weekValue = Math.floor((Math.random() * 100) + 1);
-    $scope.monthValue = Math.floor((Math.random() * 100) + 1);
+    $scope.dayValue = util.getSystemDate().day;
+    $scope.hourValue = util.getSystemDate().hour;
+    $scope.monthValue = util.getSystemDate().month;
+
+    $scope.hourPercent = Math.round(util.getSystemDate().hour / $scope.hourMax * 100);
+    $scope.dayPercent = Math.round(util.getSystemDate().day / $scope.dayMax * 100);
+    $scope.monthPercent = Math.round(util.getSystemDate().month / $scope.monthMax * 100);
+
+    console.log(util.getSystemDate().day);
+    console.log(util.getSystemDate().hour);
+    console.log(util.getSystemDate().year);
+
 /*
      $scope.random = function() {
        var value = Math.floor((Math.random() * 100) + 1);
@@ -60,4 +68,4 @@ angular.module('TimeIsMoneyApp')
      };
      $scope.randomStacked();
 */
-   });
+   }]);

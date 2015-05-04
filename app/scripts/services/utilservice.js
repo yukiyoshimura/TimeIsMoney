@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('TimeIsMoney')
+angular.module('TimeIsMoneyApp')
     .factory('util', [function() {
 
 
@@ -15,6 +15,7 @@ angular.module('TimeIsMoney')
         gettime["month"] = orgDate.getMonth()+1;
         gettime["week"]  = orgDate.getDay();
         gettime["day"]   = orgDate.getDate();
+        gettime["hour"]  = orgDate.getHours();
         gettime["yobi"]  = new Array("日","月","火","水","木","金","土");
         console.log(gettime);
 
