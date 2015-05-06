@@ -17,6 +17,7 @@ angular.module('TimeIsMoneyApp')
         gettime["day"]   = orgDate.getDate();
         gettime["hour"]  = orgDate.getHours();
         gettime["yobi"]  = new Array("日","月","火","水","木","金","土");
+        gettime["now"]   = orgDate;
         console.log(gettime);
 
         return gettime;

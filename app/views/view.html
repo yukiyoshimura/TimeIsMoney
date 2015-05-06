@@ -1,6 +1,21 @@
+<form name="userForm">
+  <div class="form-group">
+    <label for="birth">your birth</label>
+    <input type="date" class="form-control date" id="birth" ng-model="userBirth" placeholder="yyyy-MM-dd">
+    <h1 ng-if="userBirthFlag">
+      you lived...{{userDay}}Days({{userHour}}hours) until now
+    </h1>
+  </div>
+<form>
+
+<!-- <tt>value = {{userBirth | date: "yyyy-MM-dd"}}</tt><br/> -->
+<button class="btn btn-primary" ng-click="getBirth(userBirth)" ng-disabled="userForm.$dirty && userForm.$invalid">Go</button>
+
 <h1>Hour<progressbar class="progress-striped active" max="hourMax" value="hourValue" type="success"><span style="color:black; white-space:nowrap;">{{hourValue}} / {{hourMax}} (past {{hourPercent}}% of 1day)</span></progressbar></h1>
-<h1>Day<progressbar class="progress-striped active" max="dayMax" value="dayValue" type="success"><span style="color:black; white-space:nowrap;">{{dayValue}} / {{dayMax}} (past  {{dayPercent}}% of this month)</span></progressbar></h1>
-<h1>Month<progressbar class="progress-striped active" max="monthMax" value="monthValue" type="success"><span style="color:black; white-space:nowrap;">{{monthValue}} / {{monthMax}} (past {{monthPercent}}% month of this year)</span></progressbar></h1>
+<h1>Day<progressbar class="progress-striped active" max="dayMax" value="dayValue" type="primary"><span style="color:black; white-space:nowrap;">{{dayValue}} / {{dayMax}} (past  {{dayPercent}}% of this month)</span></progressbar></h1>
+<h1>Month<progressbar class="progress-striped active" max="monthMax" value="monthValue" type="warning"><span style="color:black; white-space:nowrap;">{{monthValue}} / {{monthMax}} (past {{monthPercent}}% month of this year)</span></progressbar></h1>
+
+
 
 <!--<h1>Year<progressbar class="progress-striped active" max="yearMax" value="yearValue" type="success"><span style="color:black; white-space:nowrap;">{{yearValue}} / {{yearMax}}</span></progressbar></h1>
 -->

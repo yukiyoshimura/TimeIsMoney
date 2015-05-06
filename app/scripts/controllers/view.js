@@ -9,12 +9,17 @@
  */
 angular.module('TimeIsMoneyApp')
   .controller('ViewCtrl',['$scope','util',function ($scope,util) {
+    $scope.userBirthFlag = false;
     $scope.max = 200;
     $scope.hourMax  = 24;
     $scope.dayMax   = 30;
     $scope.weekMax  = 7;
     $scope.monthMax = 12;
     $scope.yearMax  = 30;
+    $scope.avgAge = 70;
+    $scope.userHour = 'XXX';
+    $scope.userDay = 'XXX';
+    $scope.userMonth = 0;
 
 
     $scope.dayValue = util.getSystemDate().day;
@@ -25,9 +30,27 @@ angular.module('TimeIsMoneyApp')
     $scope.dayPercent = Math.round(util.getSystemDate().day / $scope.dayMax * 100);
     $scope.monthPercent = Math.round(util.getSystemDate().month / $scope.monthMax * 100);
 
-    console.log(util.getSystemDate().day);
-    console.log(util.getSystemDate().hour);
-    console.log(util.getSystemDate().year);
+//    console.log(util.getSystemDate().day);
+//    console.log(util.getSystemDate().hour);
+//    console.log(util.getSystemDate().year);
+
+
+    $scope.getBirth = function(birthday) {
+      $scope.userBirthFlag = true;
+      var userDate = new Date(birthday);
+      var diff = ((util.getSystemDate().now).getTime() - userDate.getTime()) / 1000;
+      //hour
+      $scope.userHour = Math.floor(diff /(60*60));
+      //day
+      $scope.userDay = Math.floor(diff /(60*60*24));
+
+//      console.log('userDate.getTime())' + userDate.getTime() + ' now-->' + (util.getSystemDate().now).getTime());
+//      console.log('diff=' + diff);
+//      console.log(userDate.getTime());
+//      console.log($scope.userHour + ' dayIs' + $scope.userDay);
+//      console.log(birthday);
+
+    };
 
 /*
      $scope.random = function() {
