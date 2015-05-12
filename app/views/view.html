@@ -4,21 +4,19 @@
     <input type="date" class="form-control date" id="birth" ng-model="userBirth" placeholder="yyyy-MM-dd">
     <!-- <tt>value = {{userBirth | date: "yyyy-MM-dd"}}</tt><br/> -->
     <button class="btn btn-primary" ng-click="getBirth(userBirth)" ng-disabled="userForm.$dirty && userForm.$invalid">Go</button>
-    <br>
+    <br><br>
 
     <label for="fromDate">your fromDate</label>
-    <input type="date" class="form-control date" id="fromDate" ng-model="userfromDate" placeholder="yyyy-MM-dd">
+    <input type="date" class="form-control date" id="fromDate" ng-model="userFromDate" placeholder="yyyy-MM-dd">
     <!-- <tt>value = {{userfromDate | date: "yyyy-MM-dd"}}</tt><br/> -->
 
     <label for="toDate">your target</label>
     <input type="date" class="form-control date" id="target" ng-model="userToDate" placeholder="yyyy-MM-dd">
+
     <button class="btn btn-primary" ng-click="getBetween(userFromDate,userToDate)" ng-disabled="userForm.$dirty && userForm.$invalid">Go</button>
 
-    <h1 ng-if="usertoDateFlag">
-      you lived...{{userDaytoDate}}Days({{userHourBirth}}hours) until now
-    </h1>
-    <h1 ng-if="userFromToFlag">
-      you have...{{userDayTarget}}Days({{userHourTarget}}hours) from now
+    <h1 ng-if="userBirthFlag">
+      you lived...{{userDayBirth}}Days({{userHourBirth}}hours) until now
     </h1>
   </div>
 <form>
@@ -28,9 +26,13 @@
 <h1>Day<progressbar class="progress-striped active" max="dayMax" value="dayValue" type="primary"><span style="color:black; white-space:nowrap;">{{dayValue}} / {{dayMax}} (past  {{dayPercent}}% of this month)</span></progressbar></h1>
 <h1>Month<progressbar class="progress-striped active" max="monthMax" value="monthValue" type="warning"><span style="color:black; white-space:nowrap;">{{monthValue}} / {{monthMax}} (past {{monthPercent}}% month of this year)</span></progressbar></h1>
 
-<h2>You have time to Target date</h2>
-<h1>Day<progressbar class="progress-striped active" max="dayMax" value="dayValue" type="primary"><span style="color:black; white-space:nowrap;">{{dayValueTarget}} / {{dayMaxTarget}} (past  {{dayPercentTarget}}% of this month)</span></progressbar></h1>
-
+<div ng-if="userFromToFlag">
+  <h2>You have time to To</h2>
+  <h1>
+    you have...{{remainDay}}Days({{remainHour}}hours) from now
+  </h1>
+  <h1>Day<progressbar class="progress-striped active" max="MaxDayFrTo" value="userDayFrNow" type="primary"><span style="color:black; white-space:nowrap;">{{userDayFrNow}} / {{MaxDayFrTo}} (past  {{dayPercentFrTo}}% between Fr-TO)</span></progressbar></h1>
+</div>
 
 <!--<h1>Year<progressbar class="progress-striped active" max="yearMax" value="yearValue" type="success"><span style="color:black; white-space:nowrap;">{{yearValue}} / {{yearMax}}</span></progressbar></h1>
 -->

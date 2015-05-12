@@ -60,34 +60,13 @@ angular.module('TimeIsMoneyApp')
     };
 
 
-    $scope.getTarget = function(targetday) {
-      $scope.userTargetFlag = true;
-      var userDate = new Date(targetday);
-      //targetday - systemdate
-      var diff = (userDate.getTime() - (util.getSystemDate().now).getTime()) / 1000;
-      //hour
-      $scope.userHourTarget = Math.floor(diff /(60*60));
-      //day
-      $scope.userDayTarget = Math.floor(diff /(60*60*24));
-      $scope.MaxDayTarget = $scope.userDayTarget;
-
-
-//      console.log('userDate.getTime())' + userDate.getTime() + ' now-->' + (util.getSystemDate().now).getTime());
-//      console.log('diff=' + diff);
-//      console.log(userDate.getTime());
-//      console.log($scope.userHour + ' dayIs' + $scope.userDay);
-//      console.log(birthday);
-
-    };
-
-
-
     // A:to - from
     // B:systemdate - from
     // B/A is how past
-    $scope.getBetween = function(from,to) {
+    $scope.getBetween = function(fr,to) {
+      console.log(fr + to);
       $scope.userFromToFlag = true;
-      var userDateFr = new Date(from);
+      var userDateFr = new Date(fr);
       var userDateTo = new Date(to);
       //targetday - fromdate
       var diffFrTo = (userDateTo.getTime() - userDateFr.getTime()) / 1000;
@@ -97,28 +76,22 @@ angular.module('TimeIsMoneyApp')
       //convert
       //frto
       //hour
-      $scope.userHourBetween = Math.floor(diff /(60*60));
+      $scope.userHourFrTo = Math.floor(diffFrTo /(60*60));
       //day
-      $scope.userDayBetween = Math.floor(diff /(60*60*24));
-      $scope.MaxDayBetween = $scope.userDayBetween;
+      $scope.userDayFrTo = Math.floor(diffFrTo /(60*60*24));
+      $scope.MaxDayFrTo = $scope.userDayFrTo;
 
       //frsysdate
       //hour
-      $scope.userHourBetween = Math.floor(diff /(60*60));
+      $scope.userHourFrNow = Math.floor(diffFrNow /(60*60));
       //day
-      $scope.userDayBetween = Math.floor(diff /(60*60*24));
-      $scope.MaxDayBetween = $scope.userDayBetween;
+      $scope.userDayFrNow = Math.floor(diffFrNow /(60*60*24));
 
+      //FrTo is whole period
+      $scope.dayPercentFrTo = Math.round($scope.userDayFrNow / $scope.MaxDayFrTo * 100);
 
-  //    $scope.hourPercentBetween = Math.round(util.getSystemDate().hour / $scope.hourMax * 100);
-      $scope.dayPercentBetween = Math.round(util.getSystemDate().day / $scope.dayMax * 100);
-    //  $scope.monthPercentBetween = Math.round(util.getSystemDate().month / $scope.monthMax * 100);
-//      console.log('userDate.getTime())' + userDate.getTime() + ' now-->' + (util.getSystemDate().now).getTime());
-//      console.log('diff=' + diff);
-//      console.log(userDate.getTime());
-//      console.log($scope.userHour + ' dayIs' + $scope.userDay);
-//      console.log(birthday);
-
+      $scope.remainHour = $scope.userHourFrTo - $scope.userHourFrNow;
+      $scope.remainDay  = $scope.userDayFrTo - $scope.userDayFrNow;
     };
 
 /*
