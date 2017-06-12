@@ -1,0 +1,65 @@
+<form name="userForm">
+  <div class="form-group">
+    <label for="birth">your birth</label>
+    <input type="date" class="form-control date" id="birth" ng-model="userBirth" placeholder="yyyy-MM-dd">
+    <!-- <tt>value = {{userBirth | date: "yyyy-MM-dd"}}</tt><br/> -->
+    <button class="btn btn-primary" ng-click="getBirth(userBirth)" ng-disabled="userForm.$dirty && userForm.$invalid">Go</button>
+    <br><br>
+
+    <label for="fromDate">your fromDate</label>
+    <input type="date" class="form-control date" id="fromDate" ng-model="userFromDate" placeholder="yyyy-MM-dd">
+    <!-- <tt>value = {{userfromDate | date: "yyyy-MM-dd"}}</tt><br/> -->
+
+    <label for="toDate">your target</label>
+    <input type="date" class="form-control date" id="target" ng-model="userToDate" placeholder="yyyy-MM-dd">
+
+    <button class="btn btn-primary" ng-click="getBetween(userFromDate,userToDate)" ng-disabled="userForm.$dirty && userForm.$invalid">Go</button>
+
+    <h1 ng-if="userBirthFlag">
+      you lived...{{userDayBirth}}Days({{userHourBirth}}hours) until now
+    </h1>
+  </div>
+<form>
+
+<h2>Basic Info</h2>
+<h1>Hour<progressbar class="progress-striped active" max="hourMax" value="hourValue" type="success"><span style="color:black; white-space:nowrap;">{{hourValue}} / {{hourMax}} (past {{hourPercent}}% of 1day)</span></progressbar></h1>
+<h1>Day<progressbar class="progress-striped active" max="dayMax" value="dayValue" type="primary"><span style="color:black; white-space:nowrap;">{{dayValue}} / {{dayMax}} (past  {{dayPercent}}% of this month)</span></progressbar></h1>
+<h1>Month<progressbar class="progress-striped active" max="monthMax" value="monthValue" type="warning"><span style="color:black; white-space:nowrap;">{{monthValue}} / {{monthMax}} (past {{monthPercent}}% month of this year)</span></progressbar></h1>
+
+<div ng-if="userFromToFlag">
+  <h2>You have time to To</h2>
+  <h1>
+    you have...{{remainDay}}Days({{remainHour}}hours) from now
+  </h1>
+  <h1>Day<progressbar class="progress-striped active" max="MaxDayFrTo" value="userDayFrNow" type="primary"><span style="color:black; white-space:nowrap;">{{userDayFrNow}} / {{MaxDayFrTo}} (past  {{dayPercentFrTo}}% between Fr-TO)</span></progressbar></h1>
+</div>
+
+<!--<h1>Year<progressbar class="progress-striped active" max="yearMax" value="yearValue" type="success"><span style="color:black; white-space:nowrap;">{{yearValue}} / {{yearMax}}</span></progressbar></h1>
+-->
+<!--
+  <h3>Static</h3>
+  <div class="row">
+      <div class="col-sm-4"><progressbar value="55"></progressbar></div>
+      <div class="col-sm-4"><progressbar class="progress-striped" value="22" type="warning">22%</progressbar></div>
+      <div class="col-sm-4"><progressbar class="progress-striped active" max="200" value="166" type="danger"><i>166 / 200</i></progressbar></div>
+  </div>
+-->
+
+<!--
+  <hr />
+  <h3>Dynamic <button class="btn btn-sm btn-primary" type="button" ng-click="random()">Randomize</button></h3>
+  <progressbar max="max" value="dynamic"><span style="color:black; white-space:nowrap;">{{dynamic}} / {{max}}</span></progressbar>
+-->
+<!--
+  <small><em>No animation</em></small>
+  <progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></progressbar>
+-->
+
+<!--
+  <small><em>Object (changes type based on value)</em></small>
+  <progressbar class="progress-striped active" value="dynamic" type="{{type}}">{{type}} <i ng-show="showWarning">!!! Watch out !!!</i></progressbar>
+
+  <hr />
+  <h3>Stacked <button class="btn btn-sm btn-primary" type="button" ng-click="randomStacked()">Randomize</button></h3>
+  <progress><bar ng-repeat="bar in stacked track by $index" value="bar.value" type="{{bar.type}}"><span ng-hide="bar.value < 5">{{bar.value}}%</span></bar></progress>
+-->
